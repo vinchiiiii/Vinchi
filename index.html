@@ -1,30 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Message Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy birthday!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff0000;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .heart-confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            /* Removed background-color: #ff69b4; */
+            border-radius: 5px 5px 0 0;
+            animation: fall 3s linear infinite;
+        }
+
+        /* Define color variations using :nth-child selectors */
+        .heart-confetti:nth-child(1n) { background-color: #ff69b4; } /* Pink */
+        .heart-confetti:nth-child(2n) { background-color: #ffb6c1; } /* Light Pink */
+        .heart-confetti:nth-child(3n) { background-color: #db7093; } /* Pale Pink */
+        .heart-confetti:nth-child(4n) { background-color: #ff00ff; } /* Magenta */
+        .heart-confetti:nth-child(5n) { background-color: #ff0000; } /* Red */
+        .heart-confetti:nth-child(6n) { background-color: #ff8c00; } /* Orange */
+        .heart-confetti:nth-child(7n) { background-color: #ffff00; } /* Yellow */
+
+        @keyframes fall {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(calc(100vw - 15px), calc(100vh - 15px)); }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .button {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>HELLO MY LOVE, CHAROT</h1>
+        <p id="message">Click mo po yung generate message hehe</p>
+        <button class="button" onclick="generateMessage()">Generate Message</button>
+    </div>
 
-<h1>FOR MAH BESTFRIEND</h1>
+    <script>
+        const numConfetti = 80;
+        for (let i = 0; i < numConfetti; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'heart-confetti';
+            confetti.style.top = `${Math.random() * 100}%`;
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.animationDelay = `${Math.random() * 3}s`;
+            document.body.appendChild(confetti);
+        }
 
-<button onclick="createMessage()">Generate Message</button>
-
-<div id="message"></div>
-
-<script>
-function createMessage() {
-  let friendName = "Mah Bestfriend"; // Hardcoded name
-  let message = `Hey ${friendName},
-
-I hope you are doing well. I know school has a workload of exams, assignments, and other things in between,
-so I totally get how busy everything can be. I hope everything is just as positive on your side.
-Whatever it is that you are working on, I wish you the best! Take care of yourself.
-
-Liit mo HAHAHAHHAHAHA CHARIZ LOVE YA`;
-
-  document.getElementById("message").innerHTML = message;
-}
-</script>
-
+        function generateMessage() {
+            let message = " HAPPY BIRTHDAY to the most beautiful girl i've met, Hoping that this year is the year, where your dreams begin to unfold. Continue smiling, keep sparkling, and may every opportunity bring you closer to your goals. For your endeavors, i wish you love, happiness and success! i hope all your wishes come true. Wishing you a day full of happiness and enjoy your birthday to the fullest. I Love you🥳🎂";
+            document.getElementById("message").textContent = message;
+        }
+    </script>
 </body>
 </html>
